@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "fullName": "Jane doe",
+    "email": "jdoe@lct.com",
+    "password": "XXXXXX",
+    "phone": "555-555-5555"
+  },
+  {
+    "id": 2,
+    "fullName": "Joe Dokes",
+    "email": "jdokes@lct.com",
+    "password": "XXXXXX",
+    "phone": "555-555-5555"
+ },
+ {
+   "id": 3,
+   "fullName": "Ernie Pyle",
+   "email": "epyle@lct.com",
+   "password": "XXXXXX",
+   "phone": "555-555-5555"
+}
+]
