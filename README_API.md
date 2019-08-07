@@ -68,6 +68,24 @@ There are three initial GET APIs for Project3 to start building out front end fu
 ]
 ```
 
+- localhost:3001/api/users POST - a stub - will return the word "create"
+
+```
+create
+```
+
+- localhost:3001/api/users PUT- a stub - will return the word "update"
+
+```
+update
+```
+
+- localhost:3001/api/users DELETE- a stub - will return the word "remove"
+
+```
+remove
+```
+
 ## Items API Routes
 
 - localhost:3001/api/items GET
@@ -83,14 +101,45 @@ There are three initial GET APIs for Project3 to start building out front end fu
     },
     {
         "id": 2,
+        "ownerName": "Jane doe",
+        "itemName": "Chair",
+        "itemImage": "image2.png",
+        "price": "$5.00"
+    },
+    {
+        "id": 3,
         "ownerName": "Joe Dokes",
         "itemName": "Lawn Mower",
-        "itemImage": "image2.png",
+        "itemImage": "image3.png",
         "price": "$20.00"
+    },
+    {
+        "id": 4,
+        "ownerName": "Joe Dokes",
+        "itemName": "Shovel",
+        "itemImage": "image4.png",
+        "price": "$2.00"
     }
 ]
 ```
 
+- localhost:3001/api/items POST - a stub - will return the word "create"
+
+```
+create
+```
+
+- localhost:3001/api/items PUT- a stub - will return the word "update"
+
+```
+update
+```
+
+- localhost:3001/api/items DELETE- a stub - will return the word "remove"
+- 
+```
+remove
+```
 ## Orders API Routes
 
 - localhost:3001/api/orders GET
@@ -114,4 +163,21 @@ There are three initial GET APIs for Project3 to start building out front end fu
 ]
 ```
 
+- localhost:3001/api/orders POST - a stub - will return the word "create"
+
+```
+create
+```
+
+- localhost:3001/api/orders PUT- a stub - will return the word "update"
+
+```
+update
+```
+
+- localhost:3001/api/orders DELETE- a stub - will return the word "remove"
+
+```
+remove
+```
 

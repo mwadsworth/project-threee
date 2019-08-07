@@ -8,9 +8,23 @@
   },
   {
     "id": 2,
+    "ownerName": "Jane doe",
+    "itemName": "Chair",
+    "itemImage": "image2.png",
+    "price": "$5.00"
+  },
+  {
+    "id": 3,
     "ownerName": "Joe Dokes",
     "itemName": "Lawn Mower",
-    "itemImage": "image2.png",
+    "itemImage": "image3.png",
     "price": "$20.00"
- }
+ },
+ {
+  "id": 4,
+  "ownerName": "Joe Dokes",
+  "itemName": "Shovel",
+  "itemImage": "image4.png",
+  "price": "$2.00"
+}
 ]

@@ -7,5 +7,14 @@ const itemsList = require("./items.json");
 module.exports = {
   findAll: function(req, res) {
       res.json(itemsList);
+  },
+  create: function(req, res) {
+    res.send("create");
+  },
+  update: function(req, res) {
+    res.send("update");
+  },
+  remove: function(req, res) {
+    res.send("remove");
   }
 };
