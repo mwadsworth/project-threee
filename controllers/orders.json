@@ -3,14 +3,40 @@
     "id": 1,
     "buyerName": "Jane doe",
     "orderDate": "08/01/2019",
-    "itemName": "Sofa",
-    "price": "$10.00"
+    "items": [{
+      "id": 1,
+      "ownerName": "Jane doe",
+      "itemName": "Sofa",
+      "itemImage": "image1.png",
+      "price": "$10.00"
+      },
+      {
+        "id": 3,
+        "ownerName": "Joe Dokes",
+        "itemName": "Lawn Mower",
+        "itemImage": "image3.png",
+        "price": "$20.00"
+     }
+    ]
   },
   {
     "id": 2,
     "buyerName": "Joe Dokes",
     "orderDate": "08/01/2019",
-    "itemName": "Lawn Mower",
-    "price": "$20.00"
+    "items": [{
+      "id": 1,
+      "ownerName": "Jane doe",
+      "itemName": "Sofa",
+      "itemImage": "image1.png",
+      "price": "$10.00"
+      },
+      {
+        "id": 4,
+        "ownerName": "Joe Dokes",
+        "itemName": "Shovel",
+        "itemImage": "image4.png",
+        "price": "$2.00"
+      }
+    ]
  }
 ]

@@ -7,5 +7,15 @@ const ordersList = require("./orders.json");
 module.exports = {
   findAll: function(req, res) {
       res.json(ordersList);
+  },
+  create: function(req, res) {
+    res.send("create");
+  },
+  update: function(req, res) {
+    res.send("update");
+  },
+  remove: function(req, res) {
+    res.send("remove");
   }
+
 };

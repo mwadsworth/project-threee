@@ -6,6 +6,15 @@ const userList = require("./users.json");
 // JSON file
 module.exports = {
   findAll: function(req, res) {
-      res.json(userList);
+    res.json(userList);
+  },
+  create: function(req, res) {
+    res.send("create");
+  },
+  update: function(req, res) {
+    res.send("update");
+  },
+  remove: function(req, res) {
+    res.send("remove");
   }
 };
