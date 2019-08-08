@@ -68,6 +68,7 @@ There are three initial GET APIs for Project3 to start building out front end fu
 ]
 ```
 
+<<<<<<< HEAD
 - localhost:3001/api/users POST - a stub - will return the word "create"
 
 ```
@@ -86,6 +87,8 @@ update
 remove
 ```
 
+=======
+>>>>>>> 395a425c3b883808f98d28d88e2db04e69798588
 ## Items API Routes
 
 - localhost:3001/api/items GET
@@ -101,6 +104,7 @@ remove
     },
     {
         "id": 2,
+<<<<<<< HEAD
         "ownerName": "Jane doe",
         "itemName": "Chair",
         "itemImage": "image2.png",
@@ -119,10 +123,17 @@ remove
         "itemName": "Shovel",
         "itemImage": "image4.png",
         "price": "$2.00"
+=======
+        "ownerName": "Joe Dokes",
+        "itemName": "Lawn Mower",
+        "itemImage": "image2.png",
+        "price": "$20.00"
+>>>>>>> 395a425c3b883808f98d28d88e2db04e69798588
     }
 ]
 ```
 
+<<<<<<< HEAD
 - localhost:3001/api/items POST - a stub - will return the word "create"
 
 ```
@@ -140,6 +151,8 @@ update
 ```
 remove
 ```
+=======
+>>>>>>> 395a425c3b883808f98d28d88e2db04e69798588
 ## Orders API Routes
 
 - localhost:3001/api/orders GET
@@ -163,6 +176,7 @@ remove
 ]
 ```
 
+<<<<<<< HEAD
 - localhost:3001/api/orders POST - a stub - will return the word "create"
 
 ```
@@ -180,4 +194,6 @@ update
 ```
 remove
 ```
+=======
+>>>>>>> 395a425c3b883808f98d28d88e2db04e69798588
 
