@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "ownerName": "Jane doe",
+    "ownerName": "Jane Doe",
     "itemName": "Sofa",
     "itemImage": "image1.png",
     "price": "$10.00"
   },
   {
     "id": 2,
-    "ownerName": "Jane doe",
+    "ownerName": "Jane Doe",
     "itemName": "Chair",
     "itemImage": "image2.png",
     "price": "$5.00"
