@@ -8,7 +8,86 @@
 
 There are three initial GET APIs for Project3 to start building out front end functionality and to start testing the server/client/router functions. The data models used in the JSON here is just for testing - it will change.
 
-## Details
+## Schema
+
+- The data for our application is stored in a MongoDB schema called `projectdb`
+
+- There are three collections called `users`, `items`, and `orders`.
+
+- To create and populate the schema run:
+
+  - $ npm run seed - this executes the script ./scripts/seedDB.js.
+
+- Users defined in ./models/users.js as:
+
+  ````const mongoose = require("mongoose");
+  const mongoose = require("mongoose");
+  const Schema = mongoose.Schema;
+  
+  const usersSchema = new Schema({
+    fullName: { type: String, required: true },
+    email: { type: String, required: true },
+    password: { type: String, required: true }
+  });
+  
+  const Users = mongoose.model("Users", usersSchema);
+  
+  module.exports = Users;
+  ````
+  
+- Items defined in ./models/items.js as:
+  
+  ```
+  const mongoose = require("mongoose");
+  const Schema = mongoose.Schema;
+  
+  const itemsSchema = new Schema({
+    ownerName: { type: String, required: true },
+    contact: { type: String, required: true },
+    category: { type: String, required: true },
+    itemName: { type: String, required: true },
+    itemImage: { type: String, required: true },
+    price: { type: String, required: true }
+  });
+  
+  const Items = mongoose.model("Items", itemsSchema);
+  
+  module.exports = Items;
+  
+  ```
+  
+  
+  
+- Orders defined in ./models/orders.js as:
+
+  ```
+  const mongoose = require("mongoose");
+  const Schema = mongoose.Schema;
+  
+  const itemsSchema = new Schema({
+    ownerName: { type: String, required: true },
+    contact: { type: String, required: true },
+    category: { type: String, required: true },
+    itemName: { type: String, required: true },
+    itemImage: { type: String, required: true },
+    price: { type: String, required: true }
+  });
+  
+  const ordersSchema = new Schema({
+    buyerName: { type: String, required: true },
+    orderDate: { type: Date, default: Date.now },
+    items: [itemsSchema]
+  });
+  
+  const Orders = mongoose.model("Orders", ordersSchema);
+  
+  module.exports = Orders;
+  
+  ```
+  
+  
+
+## Route Details
 
 - The routes are defined as Express routes in server.js 
   ```
@@ -44,156 +123,147 @@ There are three initial GET APIs for Project3 to start building out front end fu
 
 ```
 [
-    {
-        "id": 1,
-        "fullName": "Jane doe",
-        "email": "jdoe@lct.com",
-        "password": "XXXXXX",
-        "phone": "555-555-5555"
-    },
-    {
-        "id": 2,
-        "fullName": "Joe Dokes",
-        "email": "jdokes@lct.com",
-        "password": "XXXXXX",
-        "phone": "555-555-5555"
-    },
-    {
-        "id": 3,
-        "fullName": "Ernie Pyle",
-        "email": "epyle@lct.com",
-        "password": "XXXXXX",
-        "phone": "555-555-5555"
-    }
+{
+"_id": "5d4f110aa41d9c569096c5bb",
+"fullName": "Jane Doe",
+"email": "jdoe@lct.com",
+"password": "XXXXXX"
+},
+{
+"_id": "5d4f110aa41d9c569096c5bc",
+"fullName": "Joe Dokes",
+"email": "jdokes@lct.com",
+"password": "XXXXXX"
+},
+{
+"_id": "5d4f110aa41d9c569096c5bd",
+"fullName": "Ernie Pyle",
+"email": "epyle@lct.com",
+"password": "XXXXXX"
+}
 ]
 ```
 
-<<<<<<< HEAD
-- localhost:3001/api/users POST - a stub - will return the word "create"
+- localhost:3001/api/users POST
 
-```
-create
-```
+![](./doc/api01.gif)
 
-- localhost:3001/api/users PUT- a stub - will return the word "update"
+- localhost:3001/api/users PUT
 
-```
-update
-```
+![](./doc/api02.gif)
 
-- localhost:3001/api/users DELETE- a stub - will return the word "remove"
+- localhost:3001/api/users DELETE
 
-```
-remove
-```
+![](./doc/api03.gif)
 
-=======
->>>>>>> 395a425c3b883808f98d28d88e2db04e69798588
 ## Items API Routes
 
 - localhost:3001/api/items GET
 
 ```
 [
-    {
-        "id": 1,
-        "ownerName": "Jane doe",
-        "itemName": "Sofa",
-        "itemImage": "image1.png",
-        "price": "$10.00"
-    },
-    {
-        "id": 2,
-<<<<<<< HEAD
-        "ownerName": "Jane doe",
-        "itemName": "Chair",
-        "itemImage": "image2.png",
-        "price": "$5.00"
-    },
-    {
-        "id": 3,
-        "ownerName": "Joe Dokes",
-        "itemName": "Lawn Mower",
-        "itemImage": "image3.png",
-        "price": "$20.00"
-    },
-    {
-        "id": 4,
-        "ownerName": "Joe Dokes",
-        "itemName": "Shovel",
-        "itemImage": "image4.png",
-        "price": "$2.00"
-=======
-        "ownerName": "Joe Dokes",
-        "itemName": "Lawn Mower",
-        "itemImage": "image2.png",
-        "price": "$20.00"
->>>>>>> 395a425c3b883808f98d28d88e2db04e69798588
-    }
+{
+"_id": "5d4f110aa41d9c569096c5be",
+"ownerName": "Jane Doe",
+"contact": "jdoe@lct.com",
+"category": "Furniture",
+"itemName": "Sofa",
+"itemImage": "image1.png",
+"price": "$10.00"
+},
+{
+"_id": "5d4f110aa41d9c569096c5bf",
+"ownerName": "Jane Doe",
+"contact": "jdoe@lct.com",
+"category": "Furniture",
+"itemName": "Chair",
+"itemImage": "image2.png",
+"price": "$5.00"
+},
+{
+"_id": "5d4f110aa41d9c569096c5c0",
+"ownerName": "Joe Dokes",
+"contact": "jdokes@lct.com",
+"category": "Other",
+"itemName": "Lawn Mower",
+"itemImage": "image3.png",
+"price": "$20.00"
+},
+{
+"_id": "5d4f110aa41d9c569096c5c1",
+"ownerName": "Joe Dokes",
+"contact": "jdokes@lct.com",
+"category": "Other",
+"itemName": "Shovel",
+"itemImage": "image4.png",
+"price": "$2.00"
+}
 ]
 ```
 
-<<<<<<< HEAD
-- localhost:3001/api/items POST - a stub - will return the word "create"
+- localhost:3001/api/items POST
 
-```
-create
-```
+- localhost:3001/api/items PUT
 
-- localhost:3001/api/items PUT- a stub - will return the word "update"
+- localhost:3001/api/items DELETE
 
-```
-update
-```
-
-- localhost:3001/api/items DELETE- a stub - will return the word "remove"
-- 
-```
-remove
-```
-=======
->>>>>>> 395a425c3b883808f98d28d88e2db04e69798588
 ## Orders API Routes
 
 - localhost:3001/api/orders GET
 
 ```
 [
-    {
-        "id": 1,
-        "buyerName": "Jane doe",
-        "orderDate": "08/01/2019",
-        "itemName": "Sofa",
-        "price": "$10.00"
-    },
-    {
-        "id": 2,
-        "buyerName": "Joe Dokes",
-        "orderDate": "08/01/2019",
-        "itemName": "Lawn Mower",
-        "price": "$20.00"
-    }
+	{
+	"_id": "5d4f110aa41d9c569096c5c2",
+	"buyerName": "Jane Doe",
+	"orderDate": "2019-08-01T06:00:00.000Z",
+	"items": [
+			{
+			"ownerName": "Jane Doe",
+			"contact": "jdoe@lct.com",
+			"category": "Furniture",
+			"itemName": "Sofa",
+			"itemImage": "image1.png",
+			"price": "$10.00"
+			},
+			{
+			ownerName": "Joe Dokes",
+			contact": "jdokes@lct.com",
+			category": "Other",
+			itemName": "Lawn Mower",
+			itemImage": "image3.png",
+			price": "$20.00"
+			
+			
+},
+{
+	_id": "5d4f110aa41d9c569096c5c3",
+	"buyerName": "Joe Dokes",
+	"orderDate": "2019-08-01T06:00:00.000Z",
+	"items": [
+			{
+			"ownerName": "Jane Doe",
+			"contact": "jdoe@lct.com",
+			"category": "Furniture",
+			"itemName": "Sofa",
+			"itemImage": "image1.png",
+			"price": "$10.00"
+			},
+			{
+			"ownerName": "Joe Dokes",
+			"contact": "jdokes@lct.com",
+			"category": "Other",
+			"itemName": "Shovel",
+			"itemImage": "image4.png",
+			"price": "$2.00"
+			}
+			]
+}
 ]
 ```
 
-<<<<<<< HEAD
-- localhost:3001/api/orders POST - a stub - will return the word "create"
+- localhost:3001/api/orders POST
 
-```
-create
-```
+- localhost:3001/api/orders PUT
 
-- localhost:3001/api/orders PUT- a stub - will return the word "update"
-
-```
-update
-```
-
-- localhost:3001/api/orders DELETE- a stub - will return the word "remove"
-
-```
-remove
-```
-=======
->>>>>>> 395a425c3b883808f98d28d88e2db04e69798588
-
+- localhost:3001/api/orders DELETE

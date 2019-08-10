@@ -2,19 +2,32 @@ const db = require("../models");
 const itemsList = require("./items.json");
 
 // Defining methods for the itemsController
-// Right now this is a stub getting data from a
-// JSON file
 module.exports = {
   findAll: function(req, res) {
-      res.json(itemsList);
+    db.Items.find(req.query)
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findById: function(req, res) {
+    db.Items.findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    res.send("create");
+    db.Items.create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    res.send("update");
+    db.Items.findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    res.send("remove");
+    db.Items.findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };
