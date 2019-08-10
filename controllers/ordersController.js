@@ -2,20 +2,32 @@ const db = require("../models");
 const ordersList = require("./orders.json");
 
 // Defining methods for the ordersController
-// Right now this is a stub getting data from a
-// JSON file
 module.exports = {
   findAll: function(req, res) {
-      res.json(ordersList);
+    db.Orders.find(req.query)
+      .sort({ date: -1 })
+      .then(dbModel => { console.log(dbModel); res.json(dbModel)})
+      .catch(err => res.status(422).json(err));
+  },
+  findById: function(req, res) {
+    db.Orders.findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    res.send("create");
+    db.Orders.create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    res.send("update");
+    db.Orders.findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    res.send("remove");
+    db.Orders.findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
-
 };

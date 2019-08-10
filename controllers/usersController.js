@@ -2,19 +2,37 @@ const db = require("../models");
 const userList = require("./users.json");
 
 // Defining methods for the usersController
-// Right now this is a stub getting data from a
-// JSON file
 module.exports = {
   findAll: function(req, res) {
-    res.json(userList);
+    db.Users
+      .find(req.query)
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findById: function(req, res) {
+    db.Users
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    res.send("create");
+    db.Users
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    res.send("update");
+    db.Users
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    res.send("remove");
+    db.Users
+      .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

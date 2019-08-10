@@ -1,68 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project 3 - 
 
-## Available Scripts
+August 3, 2019
 
-In the project directory, you can run:
+## Project Members
 
-### `npm start`
+- Marilyn Wadsworth
+- Serena Brown
+- Gezahegn Hika
+- Paul Raab
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Title
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## MVP
+- Buy/Sell application - Our application will provide a platform to upload/purchase/allow communication between users to sell items.
 
-### `npm test`
+- Why is a buting/selling app valuable? - This app will be useful because users can easily fill out a form and post items on the platform easily to sell.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- This app is strictly for people wanting to get rid of items, not merchandise. (kind of like Craigslist, but just selling items and easier to use).
 
-### `npm run build`
+- This app will be useful for people looking for a good deal and not wanting to by brand new items, ex: students looking for a microwave.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technology Stack
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+-   Technology our app will most likely use
+- KanBan
+- Node/Express
+- Passport
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- MongoDB/ Mongoose ORM
 
-### `npm run eject`
+- React
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- ReactStrap
+- SASS
+- Heroku
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##  Who's Doing What?
+Dataflow: Paul
+Making it pretty (React): Marilyn /Serena
+Express server: Serena Paul
+Database: Gezu
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Fun To Have
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## GitHub and Heroku Repositories
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[GitHub Repository](https://github.com/mwadsworth/project-threee/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Heroku Repository]()
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
