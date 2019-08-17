@@ -1,21 +1,39 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = function(sequelize, DataTypes) {
+  var Orders = sequelize.define("orders", {
+    // Giving the Orders model columns
+    buyerId: {
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
+    orderDate: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal("CURRENT_TIMESTAMP")
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal("CURRENT_TIMESTAMP")
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal("CURRENT_TIMESTAMP")
+    }
+  });
 
-const itemsSchema = new Schema({
-  ownerName: { type: String, required: true },
-  contact: { type: String, required: true },
-  category: { type: String, required: true },
-  itemName: { type: String, required: true },
-  itemImage: { type: String, required: true },
-  price: { type: String, required: true }
-});
+  Orders.associate = function(models) {
+    // Orders.hasMany(models.order_details, {
+    //   onDelete: "CASCADE"
+    // });
 
-const ordersSchema = new Schema({
-  buyerName: { type: String, required: true },
-  orderDate: { type: Date, default: Date.now },
-  items: [itemsSchema]
-});
+    // // An Order one to one connection to Users
+    // Orders.belongsToOne(models.users, {
+    //   as: "buyer",
+    //   through: "user_items",
+    //   onDelete: "cascade"
+    // });
+  };
 
-const Orders = mongoose.model("Orders", ordersSchema);
-
-module.exports = Orders;
+  return Orders;
+};

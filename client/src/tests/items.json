@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "itemName": "SpongeBob",
+    "itemImage": "https://vignette.wikia.nocookie.net/spongebobgalaxy/itemImages/0/07/SpongeBob_SquarePants.png/revision/latest?cb=20171228024014",
+    "category": "Fry Cook",
+    "price": "A Pineapple Under the Sea"
+  },
+  {
+    "id": 2,
+    "itemName": "Mr. Krabs",
+    "itemImage": "https://vignette3.wikia.nocookie.net/vsbattles/itemImages/8/80/Mr._Krabs.png/revision/latest?cb=20150919162131",
+    "category": "Restaurant Owner",
+    "price": "A Giant Anchor"
+  },
+  {
+    "id": 3,
+    "itemName": "Squidward",
+    "itemImage": "https://vignette2.wikia.nocookie.net/fictionalcharacters/itemImages/a/ac/Squidward.png/revision/latest?cb=20131121012626",
+    "category": "Cashier",
+    "price": "An Easter Island Head"
+  },
+  {
+    "id": 4,
+    "itemName": "Dexter",
+    "itemImage": "https://s-media-cache-ak0.pinimg.com/originals/fe/32/49/fe32495d45283cd6860ae122f0aeaad9.png",
+    "category": "Boy Genius",
+    "price": "A Secret Laboratory"
+  },
+  {
+    "id": 5,
+    "itemName": "Courage",
+    "itemImage": "https://vignette4.wikia.nocookie.net/vsbattles/itemImages/3/39/Courage-0.png/revision/latest?cb=20160719055423",
+    "category": "A Cowardly Dog",
+    "price": "Nowhere, Kansas"
+  },
+  {
+    "id": 6,
+    "itemName": "Doug Funnie",
+    "itemImage": "https://vignette1.wikia.nocookie.net/doug/itemImages/3/3b/Doug001.gif/revision/latest?cb=20110807170511",
+    "category": "Student",
+    "price": "Bluffington"
+  },
+  {
+    "id": 7,
+    "itemName": "Bugs Bunny",
+    "itemImage": "https://vignette2.wikia.nocookie.net/deathbattlefanon/itemImages/2/2b/Bugs_Bunny.png/revision/latest?cb=20151206010607",
+    "category": "Looney Toon",
+    "price": "A Rabbit Burrow"
+  },
+  {
+    "id": 8,
+    "itemName": "Johnny Bravo",
+    "itemImage": "http://vignette3.wikia.nocookie.net/p__/itemImages/9/9a/Johnny_Bravo.png/revision/latest?cb=20131031233339&path-prefix=protagonist",
+    "category": "Ladies Man",
+    "price": "Aron City"
+  },
+  {
+    "id": 9,
+    "itemName": "Tommy Pickles",
+    "itemImage": "https://vignette4.wikia.nocookie.net/uncyclopedia/itemImages/e/e4/Tommy_Pickles.png/revision/latest?cb=20110530102641",
+    "category": "Adventurer",
+    "price": "California"
+  },
+  {
+    "id": 10,
+    "itemName": "Rocko",
+    "itemImage": "http://vignette3.wikia.nocookie.net/rockosmodernlife/itemImages/9/9e/Rockos-modern-life-4e582a8f06a41.png/revision/latest?cb=20130522173416",
+    "category": "Cashier",
+    "price": "O-Town, California"
+  },
+  {
+    "id": 11,
+    "itemName": "Captain Planet",
+    "itemImage": "http://vignette2.wikia.nocookie.net/dragon-rap-battles/itemImages/b/b6/Captain_Planet.png/revision/latest?cb=20160911200836",
+    "category": "Superhero",
+    "price": "Earth"
+  },
+  {
+    "id": 12,
+    "itemName": "Ickis",
+    "itemImage": "http://static.tvtropes.org/pmwiki/pub/itemImages/ickis.png",
+    "category": "Ahhhh! A Real Monster!",
+    "price": "Under a City Dump"
+  }
+]
