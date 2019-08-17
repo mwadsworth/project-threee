@@ -51,7 +51,7 @@ export default {
   saveItem: function(itemData) {
     return axios.post("/api/items", itemData);
   },
-  
+
   // Gets all orders
   getOrders: function() {
     return axios.get("/api/orders");
@@ -67,6 +67,23 @@ export default {
   // Saves a order to the database
   saveOrder: function(orderData) {
     return axios.post("/api/orders", orderData);
+  },
+
+  // Get order items
+  getOrderItems: function(id) {
+    return axios.get("/api/order/items/" + id);
+  },
+  // Deletes the order item with the given order id and item id
+  deleteOrderItem: function(oid, iid) {
+    return axios.delete("/api/order/items/" + oid + "/" + iid);
+  },
+  // Saves a order to the database
+  saveOrderItem: function(orderData) {
+    return axios.post("/api/order/items", orderData);
+  },
+
+  // Get user items view
+  getUserItemsView: function(id) {
+    return axios.get("/api/user_items_view");
   }
-  
 };
