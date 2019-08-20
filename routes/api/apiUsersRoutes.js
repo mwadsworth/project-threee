@@ -3,8 +3,8 @@ var db = require("../../models");
 module.exports = function(app) {
   // Get all users
   app.get("/api/users", function(req, res) {
-    db.users.findAll({}).then(function(dbChallenges) {
-      res.json(dbChallenges);
+    db.users.findAll({}).then(function(dbModel) {
+      res.json(dbModel);
     });
   });
 
@@ -16,8 +16,8 @@ module.exports = function(app) {
           id: req.params.id
         }
       })
-      .then(function(dbChallenges) {
-        res.json(dbChallenges);
+      .then(function(dbModel) {
+        res.json(dbModel);
       });
   });
 
@@ -25,8 +25,10 @@ module.exports = function(app) {
   app.post("/api/users", function(req, res) {
     db.users
       .create(req.body)
-      .then(function(dbChallenge) {
-        res.json(dbChallenge);
+      .then(function(dbModel) {
+        console.log("User create");
+        console.log(dbModel);
+        res.json(dbModel);
       })
       .catch(function(err) {
         // Whenever a validation or flag fails, an error is thrown
@@ -48,12 +50,21 @@ module.exports = function(app) {
       });
   });
 
+  // Delete an user by id in req.body
+  app.delete("/api/users", function(req, res) {
+    db.users
+      .destroy({ where: { id: req.body.id } })
+      .then(function(dbModel) {
+        res.json(dbModel);
+      });
+  });
+
   // Delete an user by id
   app.delete("/api/users/:id", function(req, res) {
     db.users
       .destroy({ where: { id: req.params.id } })
-      .then(function(dbChallenge) {
-        res.json(dbChallenge);
+      .then(function(dbModel) {
+        res.json(dbModel);
       });
   });
 };

@@ -22,7 +22,8 @@ SELECT
     a.id AS orderId,
     a.buyerId AS buyerId,
     b.fullName AS buyerName,
-    a.orderDate AS orderDate
+    a.orderDate AS orderDate,
+    a.orderPlaced AS orderPlaced
 FROM
     (orders a, users b)
     WHERE
@@ -36,6 +37,7 @@ SELECT
     b.buyerId AS buyerId,
     d.fullName AS buyerName,
     b.orderDate AS orderDate,
+    b.orderPlaced AS orderPlaced
     a.id AS itemId,
     a.ownerId AS ownerId,
     e.fullName AS ownerName,

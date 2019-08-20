@@ -30,10 +30,10 @@ INSERT INTO items(id, ownerId, category, itemName, itemImage, price, sold)
 VALUES (4, 2, "Other", "Shovel", "https://previews.123rf.com/images/lineartestpilot/lineartestpilot1802/lineartestpilot180218348/94930617-cartoon-shovel-illustration-design-.jpg", "$2.00", 0);
 
 -- order load
-INSERT INTO orders(id, buyerId)
-VALUES (1, 1);
-INSERT INTO orders(id, buyerId)
-VALUES (2, 2);
+INSERT INTO orders(id, buyerId, orderPlaced)
+VALUES (1, 1, 0);
+INSERT INTO orders(id, buyerId, orderPlaced)
+VALUES (2, 2, 0);
 
 
 -- order_items

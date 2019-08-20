@@ -44,9 +44,19 @@ module.exports = function(app) {
       });
   });
 
-  app.delete("/api/order/items/:id", function(req, res) {
+  app.delete("/api/order/items", function(req, res) {
     db.order_items
-      .destroy({ where: { id: req.params.id } })
+      .destroy({
+        where: { orderId: req.body.orderId, itemId: req.body.itemId }
+      })
+      .then(function(dbModel) {
+        res.json(dbModel);
+      });
+  });
+
+  app.delete("/api/order/items/:oid/:iid", function(req, res) {
+    db.order_items
+      .destroy({ where: { orderId: req.params.id, itemId: req.params.itemId } })
       .then(function(dbModel) {
         res.json(dbModel);
       });

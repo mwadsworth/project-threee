@@ -23,7 +23,7 @@ class Detail extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                {this.state.item.ownerName} by {this.state.item.itemName}
+                {this.state.item.ownerId} owns {this.state.item.itemName}
               </h1>
             </Jumbotron>
           </Col>

@@ -23,7 +23,8 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  removeItem = id => {
+  addItem = id => {
+    console.log("Add item to order");
     // Filter this.state.items for items with an id not equal to the id being removed
     const items = this.state.items.filter(item => item.id !== id);
     // Set this.state.items equal to the new items array
@@ -37,7 +38,7 @@ class App extends Component {
         <Title>Items List</Title>
         {this.state.items.map(item => (
           <ItemCard
-            removeItem={this.removeItem}
+            addItem={this.addItem}
             id={item.id}
             key={item.id}
             ownerName={item.ownerName}

@@ -31,7 +31,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     sold: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: true,
+      defaultValue: false
     },
     createdAt: {
       allowNull: false,

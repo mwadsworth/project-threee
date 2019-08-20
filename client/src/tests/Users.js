@@ -12,7 +12,7 @@ class Users extends Component {
     users: [],
     fullName: "",
     email: "",
-    phone: ""
+    userId: 0
   };
 
   componentDidMount() {
@@ -21,9 +21,7 @@ class Users extends Component {
 
   loadUsers = () => {
     API.getUsers()
-      .then(res =>
-        this.setState({ users: res.data, fullName: "", email: "" })
-      )
+      .then(res => this.setState({ users: res.data, fullName: "", email: "" }))
       .catch(err => console.log(err));
   };
 
@@ -42,16 +40,32 @@ class Users extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log("Calling save1");
     if (this.state.fullName && this.state.email) {
+      console.log("Calling save2");
       API.saveUser({
         fullName: this.state.fullName,
         password: "XXXXXX",
-        email: this.state.email,
-        phone: this.state.phone
+        email: this.state.email
       })
         .then(res => this.loadUsers())
         .catch(err => console.log(err));
     }
+  };
+
+  setUser = id => {
+    console.log("Inside set user");
+    // Clear localStorage
+    // localStorage.clear();
+
+    console.log(id);
+    // console.log(fullName);
+    // console.log(email);
+    // Store all content into localStorage
+    localStorage.setItem("userId", id);
+    this.setState({userId: id});
+    // localStorage.setItem("fullName", fullName);
+    // localStorage.setItem("email", email);
   };
 
   render() {
@@ -85,17 +99,16 @@ class Users extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Users</h1>
+            <h1>Users</h1>
+            <h6>Current User ID = <span>{this.state.userId}</span></h6>
             </Jumbotron>
             {this.state.users.length ? (
               <List>
                 {this.state.users.map(user => (
-                  <ListItem key={user._id}>
-                    <Link to={"/test/users/" + user.id}>
-                      <strong>
-                        {user.fullName} at {user.email}
-                      </strong>
-                    </Link>
+                  <ListItem key={user.id} >
+                    <strong onClick={() => this.setUser(user.id)}>
+                      {user.fullName} at {user.email}
+                    </strong>
                     <DeleteBtn onClick={() => this.deleteUser(user.id)} />
                   </ListItem>
                 ))}

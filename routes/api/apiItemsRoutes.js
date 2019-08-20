@@ -3,12 +3,12 @@ var db = require("../../models");
 module.exports = function(app) {
   // Get all items
   app.get("/api/items", function(req, res) {
-    db.items.findAll({}).then(function(dbOrders) {
-      res.json(dbOrders);
+    db.items.findAll({}).then(function(dbModel) {
+      res.json(dbModel);
     });
   });
 
-  // Get a order by id
+  // Get a item by id
   app.get("/api/items/:id", function(req, res) {
     db.items
       .findOne({
@@ -16,17 +16,19 @@ module.exports = function(app) {
           id: req.params.id
         }
       })
-      .then(function(dbOrders) {
-        res.json(dbOrders);
+      .then(function(dbModel) {
+        res.json(dbModel);
       });
   });
 
-  // Create a new order
+  // Create a new item
   app.post("/api/items", function(req, res) {
     db.items
       .create(req.body)
-      .then(function(dbOrder) {
-        res.json(dbOrder);
+      .then(function(dbModel) {
+        console.log("Item create");
+        console.log(dbModel.dataValues.id);
+        res.json(dbModel);
       })
       .catch(function(err) {
         // Whenever a validation or flag fails, an error is thrown
@@ -48,12 +50,17 @@ module.exports = function(app) {
       });
   });
 
-  // Delete an order by id
+  // Delete an item by id in req.body
+  app.delete("/api/items", function(req, res) {
+    db.items.destroy({ where: { id: req.body.id } }).then(function(dbModel) {
+      res.json(dbModel);
+    });
+  });
+
+  // Delete an item by id
   app.delete("/api/items/:id", function(req, res) {
-    db.items
-      .destroy({ where: { id: req.params.id } })
-      .then(function(dbOrder) {
-        res.json(dbOrder);
-      });
+    db.items.destroy({ where: { id: req.params.id } }).then(function(dbModel) {
+      res.json(dbModel);
+    });
   });
 };
