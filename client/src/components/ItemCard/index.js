@@ -9,7 +9,7 @@ function ItemCard(props) {
       </div>
       <div className="content">
         <ul>
-        <li>
+          <li>
             <strong>Owner Name:</strong> {props.ownerName}
           </li>
           <li>
@@ -23,8 +23,8 @@ function ItemCard(props) {
           </li>
         </ul>
       </div>
-      <span onClick={() => props.removeItem(props.id)} className="remove">
-        𝘅
+      <span onClick={() => props.addItem(props.id)} className="add">
+        A
       </span>
     </div>
   );

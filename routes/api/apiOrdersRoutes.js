@@ -48,12 +48,17 @@ module.exports = function(app) {
       });
   });
 
+  // Delete an order by id in req.body
+  app.delete("/api/orders", function(req, res) {
+    db.orders.destroy({ where: { id: req.body.id } }).then(function(dbModel) {
+      res.json(dbModel);
+    });
+  });
+
   // Delete an order by id
   app.delete("/api/orders/:id", function(req, res) {
-    db.orders
-      .destroy({ where: { id: req.params.id } })
-      .then(function(dbOrder) {
-        res.json(dbOrder);
-      });
+    db.orders.destroy({ where: { id: req.params.id } }).then(function(dbOrder) {
+      res.json(dbOrder);
+    });
   });
 };

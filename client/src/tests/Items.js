@@ -10,10 +10,13 @@ import { Input, FormBtn } from "../components/Form";
 class Items extends Component {
   state = {
     items: [],
-    ownerName: "",
+    ownerId: "1",
     itemName: "",
     itemImage: "",
-    price: ""
+    price: "",
+    url: "",
+    photo: null,
+    photoName: ""
   };
 
   componentDidMount() {
@@ -21,9 +24,17 @@ class Items extends Component {
   }
 
   loadItems = () => {
-    API.getItems()
+    API.getUserItemsView()
       .then(res =>
-        this.setState({ items: res.data, ownerName: "", itemName: "", itemImage: "", price: "" })
+        this.setState({
+          items: res.data,
+          itemId: "",
+          ownerId: "",
+          ownerName: "",
+          itemName: "",
+          itemImage: "",
+          price: ""
+        })
       )
       .catch(err => console.log(err));
   };
@@ -43,16 +54,49 @@ class Items extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.ownerName && this.state.itemName && this.state.itemImage && this.state.price) {
+    console.log("Calling save1");
+    if (this.state.itemName && this.state.itemImage && this.state.price) {
+      console.log("Calling save2");
       API.saveItem({
-        ownerName: this.state.ownerName,
+        ownerId: 1,
+        category: "Other",
         itemName: this.state.itemName,
         itemImage: this.state.itemImage,
-        price: this.state.price
+        price: this.state.price,
+        sold: 0
       })
         .then(res => this.loadItems())
         .catch(err => console.log(err));
     }
+  };
+
+  getFile = event => {
+    this.setState({ photo: event.target.files[0] });
+    this.setState({ photoName: event.target.files[0].name });
+    this.setState({ itemImage: event.target.files[0].name });
+    console.log(event.target.files[0]);
+    console.log(this.state);
+    console.log("Upload Photo");
+    let payload = new FormData();
+    payload.append("file", event.target.files[0]);
+    payload.append("photoName", event.target.files[0].name);
+    console.log(this.state);
+    fetch("http://localhost:3001/api/scribble", {
+      method: "POST",
+      body: payload,
+      credentials: "include",
+      mode: "cors"
+    })
+      .then(res => res.json())
+      .then(response => {
+        console.log("Got picture");
+        console.log(response);
+        this.setState({
+          url: response,
+          itemImage: response
+        });
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -65,12 +109,6 @@ class Items extends Component {
             </Jumbotron>
             <form>
               <Input
-                value={this.state.ownerName}
-                onChange={this.handleInputChange}
-                name="ownerName"
-                placeholder="Owner Name (required)"
-              />
-              <Input
                 value={this.state.itemName}
                 onChange={this.handleInputChange}
                 name="itemName"
@@ -82,14 +120,29 @@ class Items extends Component {
                 name="itemImage"
                 placeholder="Item Image (required)"
               />
+              <label>Select an image</label>
+              <input
+                type="file"
+                required
+                name="photo"
+                onChange={this.getFile}
+              />
               <Input
                 value={this.state.price}
                 onChange={this.handleInputChange}
                 name="price"
                 placeholder="Price (required)"
               />
+              <img src={this.state.url} />
+
               <FormBtn
-                disabled={!(this.state.itemName && this.state.ownerName)}
+                disabled={
+                  !(
+                    this.state.itemName &&
+                    this.state.itemImage &&
+                    this.state.price
+                  )
+                }
                 onClick={this.handleFormSubmit}
               >
                 Submit Item
@@ -104,12 +157,13 @@ class Items extends Component {
               <List>
                 {this.state.items.map(item => (
                   <ListItem key={item._id}>
-                    <Link to={"/test/items/" + item._id}>
+                    <Link to={"/test/items/" + item.itemId}>
                       <strong>
-                        {item.ownerName} at {item.itemName}
+                        {item.ownerId} - {item.ownerName} - {item.itemId} -{" "}
+                        {item.itemName} - {item.price}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteItem(item._id)} />
+                    <DeleteBtn onClick={() => this.deleteItem(item.itemId)} />
                   </ListItem>
                 ))}
               </List>

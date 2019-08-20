@@ -5,10 +5,11 @@ import Books from "./pages/Books";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Navbar from "./components/Navbar";
 import WhatsOnSale from "./pages/WhatsOnSale";
 import Users from "./tests/Users";
 import UserDetail from "./tests/UserDetail";
-import TestItems from "./tests/Items";
+import Items from "./tests/Items";
 import ItemsGrid from "./tests/ItemsGrid";
 import ItemDetail from "./tests/ItemDetail";
 import Orders from "./tests/Orders";
@@ -19,11 +20,12 @@ function App() {
     <Router>
       <div>
         <Nav />
+        <Navbar />
         <Switch>
           <Route exact path="/" component={WhatsOnSale} />
           <Route exact path="/test/users" component={Users} />
           <Route exact path="/test/users/:id" component={UserDetail} />
-          <Route exact path="/test/items" component={TestItems} />
+          <Route exact path="/test/items" component={Items} />
           <Route exact path="/test/itemsGrid" component={ItemsGrid} />
           <Route exact path="/test/items/:id" component={ItemDetail} />
           <Route exact path="/test/orders" component={Orders} />
