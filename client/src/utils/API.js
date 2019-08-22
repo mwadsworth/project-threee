@@ -87,5 +87,10 @@ export default {
   // Get user items view
   getUserItemsView: function(id) {
     return axios.get("/api/user_items_view");
+  },
+
+  // Get order buyers view
+  getOrderBuyersView: function(id) {
+    return axios.get("/api/order_buyers_view");
   }
 };

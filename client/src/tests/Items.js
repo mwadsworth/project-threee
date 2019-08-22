@@ -10,17 +10,21 @@ import { Input, FormBtn } from "../components/Form";
 class Items extends Component {
   state = {
     items: [],
-    ownerId: "1",
+    ownerId: "",
     itemName: "",
     itemImage: "",
     price: "",
     url: "",
     photo: null,
-    photoName: ""
+    photoName: "",
+    userId: ""
   };
 
   componentDidMount() {
     this.loadItems();
+    let id = localStorage.getItem("userId")
+    console.log("Id = " + id);
+    this.setState({"userId": id})
   }
 
   loadItems = () => {
@@ -57,8 +61,9 @@ class Items extends Component {
     console.log("Calling save1");
     if (this.state.itemName && this.state.itemImage && this.state.price) {
       console.log("Calling save2");
+      console.log(parseInt(this.state.userId));
       API.saveItem({
-        ownerId: 1,
+        ownerId: parseInt(this.state.userId),
         category: "Other",
         itemName: this.state.itemName,
         itemImage: this.state.itemImage,

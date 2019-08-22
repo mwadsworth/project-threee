@@ -37,7 +37,7 @@ SELECT
     b.buyerId AS buyerId,
     d.fullName AS buyerName,
     b.orderDate AS orderDate,
-    b.orderPlaced AS orderPlaced
+    b.orderPlaced AS orderPlaced,
     a.id AS itemId,
     a.ownerId AS ownerId,
     e.fullName AS ownerName,
@@ -51,6 +51,7 @@ FROM
 )
     WHERE
 (b.buyerId = d.id) AND
+(c.itemId = a.id) AND
 (a.ownerId = e.id) AND
 (c.orderId = b.id) AND
 (c.itemId = a.id)
