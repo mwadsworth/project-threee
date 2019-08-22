@@ -50,8 +50,10 @@ class Orders extends Component {
   }
 
   loadOrders = () => {
-    API.getOrderBuyersView()
+    API.getOrders()
       .then(res => {
+        // console.log("Here1");
+        // console.log(res);
         this.setState({
           orders: res.data
         });
@@ -60,10 +62,9 @@ class Orders extends Component {
         // console.log(this.state.orders.items);
         this.state.orders.forEach(function(order) {
           console.log("Here3");
-          console.log(order.orderId);
-          console.log(order.buyerId);
           console.log(order.buyerName);
           console.log(order.orderDate);
+          console.log(order.items);
         });
 
         return;
@@ -83,27 +84,66 @@ class Orders extends Component {
         console.log("Show order items");
         console.log(res);
         this.setState({
-          items: res.data
+          items: res.data.items
         });
-        console.log(this.state.items);
       })
       .catch(err => console.log(err));
   };
 
   deleteOrder = id => {
     API.deleteOrder(id)
-      .then(res => {
-        console.log("Delete order");
-        console.log(res);
-        this.loadOrders();
-      })
+      .then(res => this.loadOrders())
       .catch(err => console.log(err));
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.buyerName && this.state.orderDate) {
+      API.saveOrder({
+        buyerName: this.state.buyerName,
+        orderDate: this.state.orderDate
+      })
+        .then(res => this.loadOrders())
+        .catch(err => console.log(err));
+    }
   };
 
   render() {
     return (
       <Container fluid>
         <Row>
+          <Col size="md-6">
+            <Jumbotron>
+              <h1>Create Order</h1>
+            </Jumbotron>
+            <form>
+              <Input
+                value={this.state.buyerName}
+                onChange={this.handleInputChange}
+                name="buyerName"
+                placeholder="Owner Name (required)"
+              />
+              <Input
+                value={this.state.orderDate}
+                onChange={this.handleInputChange}
+                name="orderDate"
+                placeholder="Order Date (required)"
+              />
+              <FormBtn
+                disabled={!(this.state.orderDate && this.state.buyerName)}
+                onClick={this.handleFormSubmit}
+              >
+                Submit Order
+              </FormBtn>
+            </form>
+          </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
               <h1>Orders</h1>
@@ -111,17 +151,13 @@ class Orders extends Component {
             {this.state.orders.length ? (
               <List>
                 {this.state.orders.map(order => (
-                  <ListItem
-                    onClick={() => this.showOrder(order.orderId)}
-                    key={order.orderId}
-                  >
-                    <strong
-                      onClick={() => this.showOrder(order.orderId)}
-                      key={order.orderId}
-                    >
-                      {order.buyerName} - {order.orderDate}
-                    </strong>
-                    <DeleteBtn onClick={() => this.deleteOrder(order.id)} />
+                  <ListItem onClick={() => this.showOrder(order.id)} key={order._id}>
+                    <Link to={"#" + order._id}>
+                      <strong>
+                        {order.buyerName} at {order.orderDate}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => this.showOrder(order.id)} />
                   </ListItem>
                 ))}
               </List>
@@ -129,20 +165,13 @@ class Orders extends Component {
               <h3>No Results to Display</h3>
             )}
           </Col>
+        </Row>
+        <Row>
           <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Order Items</h1>
-            </Jumbotron>
-            {this.state.orders.length ? (
-              <Col size="md-6 sm-12">
-                <div className="App">
-                  <p className="Table-header">Basic Table</p>
-                  <Table data={this.state.items} />
-                </div>
-              </Col>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
+            <div className="App">
+              <p className="Table-header">Basic Table</p>
+              <Table data={this.state.items} />
+            </div>
           </Col>
         </Row>
       </Container>

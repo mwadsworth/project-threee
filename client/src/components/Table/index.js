@@ -7,7 +7,7 @@ class Table extends Component {
     return (
       <div>
         <BootstrapTable data={this.props.data}>
-          <TableHeaderColumn isKey dataField="id">
+        <TableHeaderColumn isKey dataField="itemId">
             ID
           </TableHeaderColumn>
           <TableHeaderColumn dataField="ownerName">
