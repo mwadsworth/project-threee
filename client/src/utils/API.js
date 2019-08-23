@@ -92,5 +92,12 @@ export default {
   // Get order buyers view
   getOrderBuyersView: function(id) {
     return axios.get("/api/order_buyers_view");
+  },
+
+  // Get order items users view
+  getOrderItemsUsersView: function(id) {
+    return axios.get("/api/order_items_users_view/" + id);
   }
+
+  
 };

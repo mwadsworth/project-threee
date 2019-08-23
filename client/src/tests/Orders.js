@@ -13,36 +13,7 @@ class Orders extends Component {
     orders: [],
     buyerName: "",
     orderDate: "",
-    items: [
-      {
-        id: 1,
-        ownerName: "Jane doe",
-        itemName: "Sofa",
-        itemImage: "image1.png",
-        price: "$10.00"
-      },
-      {
-        id: 2,
-        ownerName: "Jane doe",
-        itemName: "Chair",
-        itemImage: "image2.png",
-        price: "$5.00"
-      },
-      {
-        id: 3,
-        ownerName: "Joe Dokes",
-        itemName: "Lawn Mower",
-        itemImage: "image3.png",
-        price: "$20.00"
-      },
-      {
-        id: 4,
-        ownerName: "Joe Dokes",
-        itemName: "Shovel",
-        itemImage: "image4.png",
-        price: "$2.00"
-      }
-    ]
+    items: []
   };
 
   componentDidMount() {
@@ -55,30 +26,13 @@ class Orders extends Component {
         this.setState({
           orders: res.data
         });
-        console.log("Here2");
-        console.log(this.state.orders);
-        // console.log(this.state.orders.items);
-        this.state.orders.forEach(function(order) {
-          console.log("Here3");
-          console.log(order.orderId);
-          console.log(order.buyerId);
-          console.log(order.buyerName);
-          console.log(order.orderDate);
-        });
-
         return;
-        // this.setState({
-        //   orders: res.data,
-        //   buyerName: "",
-        //   orderDate: "",
-        //   items: []
-        // });
       })
       .catch(err => console.log(err));
   };
 
   showOrder = id => {
-    API.getOrderItems(id)
+    API.getOrderItemsUsersView(id)
       .then(res => {
         console.log("Show order items");
         console.log(res);
@@ -96,6 +50,18 @@ class Orders extends Component {
         console.log("Delete order");
         console.log(res);
         this.loadOrders();
+      })
+      .catch(err => console.log(err));
+  };
+
+  deleteItem = (oid, iid) => {
+    console.log("Delete item");
+    console.log(oid + " " + iid);
+    API.deleteOrderItem(oid, iid)
+      .then(res => {
+        console.log("Delete order item");
+        console.log(res);
+        this.showOrder();
       })
       .catch(err => console.log(err));
   };
@@ -121,7 +87,7 @@ class Orders extends Component {
                     >
                       {order.buyerName} - {order.orderDate}
                     </strong>
-                    <DeleteBtn onClick={() => this.deleteOrder(order.id)} />
+                    <DeleteBtn onClick={() => this.deleteOrder(order.orderId)} />
                   </ListItem>
                 ))}
               </List>
@@ -133,13 +99,17 @@ class Orders extends Component {
             <Jumbotron>
               <h1>Order Items</h1>
             </Jumbotron>
-            {this.state.orders.length ? (
-              <Col size="md-6 sm-12">
-                <div className="App">
-                  <p className="Table-header">Basic Table</p>
-                  <Table data={this.state.items} />
-                </div>
-              </Col>
+            {this.state.items.length ? (
+              <List>
+                {this.state.items.map(item => (
+                  <ListItem key={item._id}>
+                    <strong>
+                      {item.ownerName} - {item.category} - {item.itemName} - {item.price}
+                    </strong>
+                    <DeleteBtn onClick={() => this.deleteItem(item.orderId, item.itemId)} />
+                  </ListItem>
+                ))}
+              </List>
             ) : (
               <h3>No Results to Display</h3>
             )}

@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/test/users">
-        Users API
+        Users
       </Link>
       <div>
         <ul className="navbar-nav">
@@ -20,15 +20,7 @@ function Navbar() {
                   : "nav-link"
               }
             >
-              Items API
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/test/orders"
-              className={window.location.pathname === "/test/orders" ? "nav-link active" : "nav-link"}
-            >
-              Orders API
+              Sell Items
             </Link>
           </li>
           <li className="nav-item">
@@ -36,7 +28,15 @@ function Navbar() {
               to="/test/itemsGrid"
               className={window.location.pathname === "/test/itemsGrid" ? "nav-link active" : "nav-link"}
             >
-              Items Grid API
+              Buy Items
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/test/orders"
+              className={window.location.pathname === "/test/orders" ? "nav-link active" : "nav-link"}
+            >
+              Check Order
             </Link>
           </li>
         </ul>

@@ -1,16 +1,18 @@
 import React, { Component } from "react";
-import ItemCard from "../components/ItemCard";
-import Wrapper from "../components/Wrapper";
-import Title from "../components/Title";
-import API from "../utils/API";
+import ItemCard from "../../components/ItemCard";
+import Wrapper from "../../components/Wrapper";
+import Title from "../../components/Title";
+import API from "../../utils/API";
+import { Link } from "react-router-dom";
 
-class App extends Component {
+class ItemsGrid extends Component {
   // Setting this.state.items to the items json array
   state = {
     items: [],
     isFirst: true,
     userId: "",
-    orderId: ""
+    orderId: "",
+    count: 0
   };
 
   componentDidMount() {
@@ -18,6 +20,10 @@ class App extends Component {
     let id = localStorage.getItem("userId");
     console.log("Id = " + id);
     this.setState({ userId: id });
+    // var recievedMessage = this.props.location.state.navMessage;
+    var receivedMessage = this.props.location;
+    console.log(receivedMessage);
+    console.log(this.props.test);
   }
 
   loadItems = () => {
@@ -30,7 +36,8 @@ class App extends Component {
           itemImage: "",
           category: "",
           price: "",
-          orderId: ""
+          orderId: "",
+          count: 0
         })
       )
       .catch(err => console.log(err));
@@ -44,20 +51,21 @@ class App extends Component {
     const items = this.state.items.filter(item => item.itemId !== id);
     // Set this.state.items equal to the new items array
     this.setState({ items });
+    this.setState({ count: this.state.count + 1 });
     if (this.state.isFirst) {
-      this.setState({"isFirst": false});
+      this.setState({ isFirst: false });
       API.saveOrder({
         buyerId: parseInt(this.state.userId),
         orderPlaced: false
       })
         .then(res => {
           console.log(res);
-          this.setState({"orderId": res.data.id});
+          this.setState({ orderId: res.data.id });
           API.saveOrderItem({
             orderId: res.data.id,
             itemId: id
           })
-            .then( response => {
+            .then(response => {
               console.log(response);
             })
             .catch(err => console.log(err));
@@ -80,7 +88,11 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>Items List</Title>
+        <Title>
+          Items For Sale<Link to={"/test/orders"}> Cart</Link>{" "}
+          <span>{this.state.count}</span>
+        </Title>
+        <div className="itemList"></div>
         {this.state.items.map(item => (
           <ItemCard
             addItem={this.addItem}
@@ -98,4 +110,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ItemsGrid;

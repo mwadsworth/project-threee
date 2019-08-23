@@ -56,7 +56,7 @@ module.exports = function(app) {
 
   app.delete("/api/order/items/:oid/:iid", function(req, res) {
     db.order_items
-      .destroy({ where: { orderId: req.params.id, itemId: req.params.itemId } })
+      .destroy({ where: { orderId: req.params.oid, itemId: req.params.iid } })
       .then(function(dbModel) {
         res.json(dbModel);
       });
