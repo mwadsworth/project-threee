@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ItemCard from "../components/ItemCard";
 import Wrapper from "../components/Wrapper";
+import withAuthorization from "../components/Auth/withAuthorization";
 import Title from "../components/Title";
 import API from "../utils/API";
 
@@ -98,4 +99,6 @@ class App extends Component {
   }
 }
 
-export default App;
+const authCondition = authUser => !!authUser;
+export default withAuthorization(authCondition)(App);
+

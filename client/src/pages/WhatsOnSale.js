@@ -5,6 +5,7 @@ import { Container, Row, Col } from "reactstrap";
 // import SearchBar from "./components/SearchBar/SearchBar";
 // import CategoryMenu from "./components/CategoryMenu/CategoryMenu";
 // import ItemThumbnails from "./components/CategoryMenu/ItemThumbnails";
+import withAuthorization from "../components/Auth/withAuthorization";
 
 
 
@@ -32,6 +33,8 @@ function WhatsOnSale() {
     );
   }
 
+  const authCondition = authUser => !!authUser;
+  export default withAuthorization(authCondition)(WhatsOnSale);
+  
+  
 
-
-export default WhatsOnSale;

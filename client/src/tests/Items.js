@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
+import withAuthorization from "../components/Auth/withAuthorization";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -182,4 +183,6 @@ class Items extends Component {
   }
 }
 
-export default Items;
+const authCondition = authUser => !!authUser;
+export default withAuthorization(authCondition)(Items);
+

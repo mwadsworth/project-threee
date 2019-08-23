@@ -4,6 +4,7 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
+import withAuthorization from "../components/Auth/withAuthorization";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import Table from "../components/Table";
@@ -150,4 +151,7 @@ class Orders extends Component {
   }
 }
 
-export default Orders;
+const authCondition = authUser => !!authUser;
+export default withAuthorization(authCondition)(Orders);
+
+

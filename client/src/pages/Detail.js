@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
+import withAuthorization from "../components/Auth/withAuthorization";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
@@ -48,4 +49,7 @@ class Detail extends Component {
   }
 }
 
-export default Detail;
+
+const authCondition = authUser => !!authUser;
+export default withAuthorization(authCondition)(Detail);
+

@@ -14,6 +14,9 @@ import ItemsGrid from "./tests/ItemsGrid";
 import ItemDetail from "./tests/ItemDetail";
 import Orders from "./tests/Orders";
 import OrderDetail from "./tests/OrderDetail";
+import SignInPage from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import withAuthentication from "./components/Auth/withAuthentication";
 
 function App() {
   return (
@@ -22,6 +25,8 @@ function App() {
         <Nav />
         <Navbar />
         <Switch>
+          <Route path="/login" component={SignInPage} />
+          <Route path="/register" component={SignUp} />
           <Route exact path="/" component={WhatsOnSale} />
           <Route exact path="/test/users" component={Users} />
           <Route exact path="/test/users/:id" component={UserDetail} />
@@ -41,4 +46,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthentication(App);
