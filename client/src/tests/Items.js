@@ -22,9 +22,9 @@ class Items extends Component {
 
   componentDidMount() {
     this.loadItems();
-    let id = localStorage.getItem("userId")
+    let id = localStorage.getItem("userId");
     console.log("Id = " + id);
-    this.setState({"userId": id})
+    this.setState({ userId: id });
   }
 
   loadItems = () => {
@@ -125,7 +125,7 @@ class Items extends Component {
                 name="itemImage"
                 placeholder="Item Image (required)"
               />
-              <label>Select an image</label>
+              <label>Select an image </label>
               <input
                 type="file"
                 required
@@ -138,7 +138,12 @@ class Items extends Component {
                 name="price"
                 placeholder="Price (required)"
               />
-              <img src={this.state.url} />
+
+              {this.state.url ? (
+                <img src={this.state.url} style={{ height: 200, width: 200 }} />
+              ) : (
+                ""
+              )}
 
               <FormBtn
                 disabled={
